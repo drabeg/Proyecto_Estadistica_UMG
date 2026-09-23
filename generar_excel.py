@@ -116,26 +116,26 @@ for row_idx, row_data in df.iterrows():
     for col in range(1, 8):
         ws.cell(row=r, column=col).border = border_thin
 
-# Configurar la tabla de medidas estadísticas mediante fórmulas nativas en español
+# Configurar la tabla de medidas estadísticas mediante fórmulas estándar compatibles con Excel y Google Sheets
 ws["I3"] = "Medida Estadística"
 ws["J3"] = "Fórmula / Valor"
 ws["I3"].font = font_header; ws["I3"].fill = fill_header
 ws["J3"].font = font_header; ws["J3"].fill = fill_header
 
 formulas = [
-    ("Cantidad de datos (n)", "=CONTAR(E4:E33)"),
-    ("Media (Mbps)", "=PROMEDIO(E4:E33)"),
-    ("Mediana (Mbps)", "=MEDIANA(E4:E33)"),
-    ("Moda (Mbps)", "=MODA.UNO(E4:E33)"),
+    ("Cantidad de datos (n)", "=COUNT(E4:E33)"),
+    ("Media (Mbps)", "=AVERAGE(E4:E33)"),
+    ("Mediana (Mbps)", "=MEDIAN(E4:E33)"),
+    ("Moda (Mbps)", "=MODE.SNGL(E4:E33)"),
     ("Valor Mínimo (Mbps)", "=MIN(E4:E33)"),
     ("Valor Máximo (Mbps)", "=MAX(E4:E33)"),
     ("Rango (Mbps)", "=J9-J8"),
     ("Varianza Muestral", "=VAR.S(E4:E33)"),
-    ("Desviación Estándar (Mbps)", "=DESVEST.M(E4:E33)"),
+    ("Desviación Estándar (Mbps)", "=STDEV.S(E4:E33)"),
     ("Coeficiente de Variación (%)", "=(J12/J5)*100"),
-    ("Cuartil 1 (Q1 - Mbps)", "=CUARTIL.INC(E4:E33; 1)"),
-    ("Cuartil 2 (Q2 - Mbps)", "=CUARTIL.INC(E4:E33; 2)"),
-    ("Cuartil 3 (Q3 - Mbps)", "=CUARTIL.INC(E4:E33; 3)"),
+    ("Cuartil 1 (Q1 - Mbps)", "=QUARTILE.INC(E4:E33, 1)"),
+    ("Cuartil 2 (Q2 - Mbps)", "=QUARTILE.INC(E4:E33, 2)"),
+    ("Cuartil 3 (Q3 - Mbps)", "=QUARTILE.INC(E4:E33, 3)"),
     ("Rango Intercuartílico (IQR)", "=J16-J14")
 ]
 
